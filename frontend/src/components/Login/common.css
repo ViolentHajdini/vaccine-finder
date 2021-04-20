@@ -1,0 +1,112 @@
+.boxContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.FormContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: 0px 0px 2.5px rgba(15,15,15,0.19);
+}
+
+.BoldLink{
+    font-size: 12px;
+    color: blue;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.Input{
+    outline: none;
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgba( 200, 200, 200, 0.3);
+    padding: 0px 10px;
+    border-bottom: 1.4px solid transparent;
+    transition: all 200ms ease-in-out;
+}
+::placeholder{
+    color: rgba(200,200,200,1);   
+}
+
+.Input:focus{  
+    outline: none;
+    border-bottom: 3px solid rgba(75,207,250,1);
+}
+
+.submitButton {
+    margin-top: 4em;
+    width: 100%;
+    padding: 14px 40%;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 100px 100px 100px 100px;
+    cursor: pointer;
+    transition: all, 240ms ease-in-out;
+    background:linear-gradient(0deg, rgba(75,207,250,1) 0%, rgba(45,203,255,1) 100%);
+    font-size: 16px;
+}
+.submitButton:focus{
+    outline: none;
+}
+
+.submitButton:hover{
+    filter: brightness(1.03);
+}
+::-moz-focus-inner{
+    border:none;
+}
+.bottomWrapper{
+    display:flex;
+    flex-direction: row;
+    margin-top: 1.7em;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.bottomText{
+    font-weight: 100;
+}
+
+.switchButton{
+    padding-left: 1em;
+    justify-content: center;
+    font-weight: 700;
+    cursor: pointer;
+    color:rgba(45,203,255,1);
+}
+
+.Date{
+    display: flex;
+    flex-direction: row;
+}
+
+.dateType{
+    width: 33.3%;
+    height: 32px;
+    border: 1px solid rgba( 200, 200, 200, 0.3);
+    padding: 0px 10px;
+    border-bottom: 1.4px solid transparent;
+    transition: all 200ms ease-in-out;
+}
+
+.dateType:focus{  
+    outline: none;
+    border-bottom: 3px solid rgba(75,207,250,1);
+    -moz-appearance: textfield;
+}
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
