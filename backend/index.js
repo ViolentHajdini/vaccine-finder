@@ -8,6 +8,9 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded())
 app.use(bodyParser.json())
 
+//routes
+const users = require('./routes/users')
+
 //connect to mongoose
 const mongoose = require("mongoose")
 mongoose.connect(
@@ -22,10 +25,9 @@ db.once("open", () => {
 })
 
 app.get("/", (req, res) => {
-    console.log(req)
     res.send("hello")
 })
 
-// app.use('/users', users)
+app.use('/users', users)
 
 app.listen(port, () => console.log("listening at port", port))
