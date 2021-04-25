@@ -2,7 +2,6 @@ const express = require("express")
 const router = express.Router()
 const User = require("../models/User")
 
-console.log('zz')
 //for hashing passwords
 const bcrypt = require("bcrypt")
 const saltRounds = 10
@@ -13,9 +12,35 @@ async function passMatch(user, password) {
   return match
 }
 
-router.post("/register", (req, res) => {
-    console.log('z', req.body)
+router.post("/login", (req, res) => {
+    var { email, password } = req.body
+    //find user with given email in the database
+    User.findOne({ email: email }, async (err, user) => {
+      //no user in database has specified email
+      if (!user) {
+        res.send("User does not exist")
+      } else {
+        //email exists but incorrect password
+        let match = await passMatch(user, password)
+        if (!match) {
+          console.log("wrong email or password")
+          res.send({
+              success: false,
+              message: "wrong email or password"
+            })
+        } else {
+          //email and passwords match
+          console.log("Success: email and password match")
+          res.send({
+              success: true,
+              message: "Email and password match" 
+          })
+        }
+      }
+    })
+  })
 
+router.post("/register", (req, res) => {
     var { name, surname, email, password, address, zipCode, dateOfBirth } = req.body
     //hash password
     bcrypt.hash(password, saltRounds, function (err, hash) {
