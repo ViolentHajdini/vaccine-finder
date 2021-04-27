@@ -1,11 +1,20 @@
 import './App.css';
 import React from 'react'
+import {BrowserRouter as Router, Switch,Route} from 'react-router-dom';
+import Nav from './nav/nav';
+import Home from './Pages/Home'
 import Component from './components/Login/component';
 
 const App = () => {
   return (
     <div className="App">
-      <Component/>
+      <Router>
+        <Nav/>
+        <Switch>
+            <Route path="/" exact component={Home}/> 
+            <Route path ="/Signup" exact component={Component}/>
+        </Switch>
+      </Router>
     </div>
   )
 }

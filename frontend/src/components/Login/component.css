@@ -2,7 +2,7 @@
 .componentWrapper{
     width:100vw;
     display:flex;
-    background-color:rgb(210, 237, 255) 
+    background-color:rgb(210, 237, 255);
 }
 .ImageColor{
     background-color: rgba(21,118,184,1);
@@ -15,7 +15,6 @@
 .logo{
     color: white;
     position: relative;
-    font-weight: 600;
     font-size: 2em;
 }
 

@@ -1,0 +1,131 @@
+.home-wrapper{
+    width:100vw;
+    height: auto;
+    color:#5f6366; 
+    margin-top: 2em;  
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 500px;
+    box-shadow: 0 4px 3px 0 rgba(0,0,0,.1);
+}
+.info-container{
+    background-color:#f2f5f8;
+    height: 650px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+}  
+.find-button{
+    display:inline-block;
+    padding:0.8em 1.7em;
+    border:0.1em solid rgba(21,118,184,1);
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    background-color: transparent;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:rgba(21,118,184,1);
+    text-align:center;
+    transition: all 0.2s;
+    border-radius: 5px;
+    font-size: 1.2em;
+    width: 250px;
+}
+
+.find-button:hover{
+    color:white;
+    background-color:rgba(21,118,184,1);
+}
+
+.img-wrapper{
+    margin-left: 4em;
+    width: 40vw;
+    height: 100%;
+    background-image: url("../Doctor.jpg");
+    background-position: center;
+    background-size:cover;
+}
+
+.text-container{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+    height: auto;
+}
+
+.header-container{
+    color: rgba(21,118,184,1);
+    margin: 0;  
+}
+.paragraph-container{
+    font-size: em;
+}
+
+.bullshit{
+    height: 600px;
+    width: 50vw;
+    margin-top: 5em;
+}
+
+.header-c{
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 1.5em;
+
+}
+.tag{
+    width: 20px;
+    height: 5px;
+    background: rgba(21,118,184,1);
+    border-radius:0.12em;
+}
+
+.header-p{
+    margin-top:15px;
+    font-weight: 300;
+    font-size: 1.2em;
+}
+
+.nav-bottom{
+    margin-top: 100px;
+    width: 100vw;
+    height: 250px;
+    background: rgb(10, 71, 112);
+}
+
+.second-container{
+    width: 65vw;
+    height: 500px;
+    background: rgba(21,118,184,1);
+    margin-top: 5em; 
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;   
+}
+
+.bot-nav-wrapper{
+    width: 80%;
+    height: auto;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+.header-bot{
+    color: white;
+    margin: auto;
+    font-weight: 600;
+    font-size: 2em;
+    margin-top: 10px;
+
+}
+.nav-bot{
+    color: white;
+    margin: auto;
+    font-weight: 300;
+    font-size: 1em;
+    margin-top: 50px;
+}

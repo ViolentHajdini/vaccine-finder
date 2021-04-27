@@ -1,0 +1,74 @@
+* {
+    text-decoration: none;
+}
+
+.nav-wrapper{
+    position:fixed;
+    top: 0;
+    width: 100vw;
+    padding: .7em;
+    background: white;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+    overflow: hidden;
+    box-sizing: box-sizing;
+    flex-wrap: nowrap;
+    box-shadow: 0 4px 3px 0 rgba(0,0,0,.1);
+}
+
+
+Link{
+    color: white;
+}
+
+.nav-logo{
+    font-size: 1.3rem;
+    margin-left: 1.5em;
+    color: rgba(21,118,184,1);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.nav-container{
+    display: flex;
+    justify-content: flex-end;
+    margin:none;
+    margin-right: 5em;
+    float: right;
+}
+
+.Login{
+    display:inline-block;
+    padding:0.5em 1.7em;
+    border:0.1em solid rgba(21,118,184,1);
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    background-color: transparent;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:rgba(21,118,184,1);
+    text-align:center;
+    transition: all 0.2s;
+    border-radius: 5px;
+}
+
+.Login:hover{
+    color:white;
+    background-color:rgba(21,118,184,1);
+}
+
+.find-vaccine{
+    color:rgb(70, 70, 70);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin:auto;
+    margin-right: 2em;
+}
+
+.find-vaccine:hover{
+    border-bottom:0.15em  solid rgba(21,118,184,1);
+}
