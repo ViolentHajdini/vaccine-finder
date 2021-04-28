@@ -8,6 +8,10 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded())
 app.use(bodyParser.json())
 
+//allow cors
+var cors = require('cors')
+app.use(cors())
+
 //routes
 const users = require('./routes/users')
 

@@ -18,7 +18,10 @@ router.post("/login", (req, res) => {
     User.findOne({ email: email }, async (err, user) => {
       //no user in database has specified email
       if (!user) {
-        res.send("User does not exist")
+        res.send({
+          success: false,
+          message: "User does not exist"
+        })
       } else {
         //email exists but incorrect password
         let match = await passMatch(user, password)
