@@ -2,6 +2,7 @@ import React, { useState, useContext }   from 'react'
 import './common.css'
 import { AccountContext } from './accountContext'
 import Calendar from 'react-calendar'
+import axios from 'axios'
 
 const Register = () => {
     const [month, setMonth] = useState('')
@@ -15,7 +16,24 @@ const Register = () => {
     const [number, setNumber] = useState('')
     const [zip, setZip] = useState('')
 
-    
+    const handleOnSubmit = (e) => {
+        console.log('hit')
+        axios.post("http://localhost:5000/users/register", {
+            name: name,
+            surname: last,
+            email: email,
+            password: password,
+            address: address,
+            zipCode: zip,
+            dateOfBirth: new Date(year, month, day)
+        }).then(res => {
+            if(res.data.status){
+                console.log("User successfully registered")
+            }else{
+                console.log(res.data.message)
+            }
+        })
+    }
 
     const updateDay = (e) =>{
         if (e.target.value <= 31 && e.target.value >= 0){
@@ -57,7 +75,7 @@ const Register = () => {
                     {console.log(day)}
                 </div>
             </form>    
-            <button className="submitButton" type="submit">Sign Up</button>
+            <button className="submitButton" type="submit" onClick={e => handleOnSubmit(e)}>Sign Up</button>
             <div className="bottomWrapper" style={{paddingBottom:'2em'}}>
                 <h5 className='bottomText'>Already Registered?</h5> <h4 className={'switchButton'} onClick={ switchToSignin }>Log in</h4>
             </div>
