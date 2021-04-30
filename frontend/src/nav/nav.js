@@ -9,11 +9,12 @@ const nav = () => {
                 <div className="nav-logo">Vaccine Finder</div>
             </Link>
             <div className="nav-container">
-                <div className="find-vaccine">Find Vaccines</div>
+                <Link target='_self' to="/findvaccine">
+                    <div className="find-vaccine">Find Vaccines</div>
+                </Link>
                 <Link target="_self" to="/signUp">
                     <button className="Login">Log In</button>
                 </Link>
-
             </div>
         </div>
     )

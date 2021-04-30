@@ -66,6 +66,7 @@ Link{
     justify-content: center;
     cursor: pointer;
     margin:auto;
+    margin-top: 4px;
     margin-right: 2em;
 }
 
