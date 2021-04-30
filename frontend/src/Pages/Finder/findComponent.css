@@ -1,0 +1,157 @@
+.finder-wrapper{
+    width: 70%;
+    height: 350px;
+    background-color: #dcebfa;
+    margin: auto;
+    margin-top: 25px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px .01px rgb(218, 218, 218);
+    display: flex;
+}
+
+.text-wrapper{
+    width: 50%;   
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.h1-hospital{
+    font-size: 1.4em;
+    font-weight: 700;
+    margin: 0;
+    color: rgba(21,118,184,1);
+    margin-top: 10px;
+}
+
+.type-hospital{
+    font-size: .9em;
+    font-weight: 400;
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: #323840;
+}
+
+.type-address{
+    font-size: .9em;
+    font-weight: 400;
+    margin-top: 4px;
+    color: #323840;
+}
+
+.available-text{
+    font-size: 1em;
+    font-weight: 600;
+    margin-top: 30px;
+    color: rgba(21,118,184,1);
+}
+
+.type-vaccine{
+    font-size: 1em;
+    margin-top: 30px;
+    color: rgba(21,118,184,1);
+}
+
+.button-wrapper{
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;   
+}
+
+.reserve-button{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.react-wraper{
+    display: flex;
+    justify-content: space-between;
+    display: flex;
+    border:0.1em solid rgba(21,118,184,1);
+    border-radius: 8px;
+    padding: 0px 5px;
+    box-sizing: border-box;
+    text-decoration:none;
+    background-color: transparent;
+    font-family:'Roboto',sans-serif;
+    font-weight: 600;
+    color:rgba(21,118,184,1);   
+    transition: all 0.2s;
+    cursor: pointer;
+    width: 250px;
+    height: 40px;
+    margin: auto;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.react-wraper:hover{
+    color:white !important;
+    background-color:rgba(21,118,184,1);
+}
+
+.fa-calendar-check{
+    margin-right: 8px;
+    margin-bottom:.18em;
+    font-size: 1em;
+}
+
+.call-button{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.call-wrapper{
+    display: flex;
+    justify-content: space-between;
+    display: flex;
+    border:0.1em solid rgba(21,118,184,1);
+    border-radius: 8px;
+    padding: 0px 5px;
+    box-sizing: border-box;
+    text-decoration:none;
+    background-color: transparent;
+    font-family:'Roboto',sans-serif;
+    font-weight: 600;
+    color:rgba(21,118,184,1);   
+    transition: all 0.2s;
+    cursor: pointer;
+    width: 250px;
+    height: 40px;
+    margin: auto;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+}
+.call-wrapper:hover{
+    color:white !important;
+    background-color:rgba(21,118,184,1);
+}
+
+.fa-phone-alt{
+    margin-right: 10px;
+    margin-bottom:.18em;
+    font-size: 1em;
+}
+
+
