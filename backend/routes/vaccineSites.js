@@ -2,6 +2,20 @@ const express = require("express")
 const router = express.Router()
 const VaccineSite = require("../models/VaccineSite")
 
+// webscrape from nyc vaccine finder
+const webScrapeVaccineSitesForZip = require('../utilities/webscrape')
+
+// router.get("/locations", (req, res) => {
+    // var { zipCode } = req.query
+    let locations = webScrapeVaccineSitesForZip("10002")
+    p = Promise.resolve(locations)
+
+    p.then(locations => locations.map(location => {
+        console.log(location.name)
+    }))
+
+// })
+
 router.get("/", (req, res) => {
     var { hospitalName } = req.query
     console.log('z', hospitalName)

@@ -23,6 +23,8 @@ mongoose.connect(
     { useNewUrlParser: true }
 )
 
+
+
 const db = mongoose.connection
 db.on("error", console.error.bind(console, "connection error:"))
 db.once("open", () => {
@@ -36,8 +38,5 @@ app.get("/", (req, res) => {
 app.use('/users', users)
 
 app.use('/vaccineSites', vaccineSites)
-
-const webScrapeVaccineSitesForZip = require('./utilities/webscrape')
-webScrapeVaccineSitesForZip("10002")
 
 app.listen(port, () => console.log("listening at port", port))
