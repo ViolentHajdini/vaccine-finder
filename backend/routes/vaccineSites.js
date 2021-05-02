@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
             
         } else{
             console.log(vaccineSite)
-            var { address, zipCode, vaccineAvailable, phoneNumber, appointmentUrl} = vaccineSite
+            var { address, zipCode, vaccineAvailable, phoneNumber, appointmentUrl, direction} = vaccineSite
 
             res.send({
                 success: true,
@@ -24,7 +24,8 @@ router.get("/", (req, res) => {
                 zipCode, 
                 vaccineAvailable, 
                 phoneNumber, 
-                appointmentUrl
+                appointmentUrl,
+                direction
             })
         }
     })
@@ -32,7 +33,7 @@ router.get("/", (req, res) => {
 
 
 router.post("/", (req, res) => {
-    var { hospitalName, address, zipCode, vaccineAvailable, vaccineType, phoneNumber, appointmentUrl } = req.body
+    var { hospitalName, address, zipCode, vaccineAvailable, vaccineType, phoneNumber, appointmentUrl, direction } = req.body
 
     const vaccineSite = new VaccineSite({
         hospitalName: hospitalName,
@@ -41,7 +42,8 @@ router.post("/", (req, res) => {
         vaccineAvailable: vaccineAvailable,
         vaccineType: vaccineType,
         phoneNumber: phoneNumber,
-        appointmentUrl: appointmentUrl
+        appointmentUrl: appointmentUrl,
+        direction: string
     })
 
     VaccineSite.find({ hospitalName: hospitalName }, (err, vaccineSites) => {

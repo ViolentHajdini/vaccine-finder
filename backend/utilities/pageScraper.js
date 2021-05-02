@@ -1,6 +1,6 @@
 const scraperObject = {
     url: 'https://vaccinefinder.nyc.gov/',
-    async scraper(browser){
+    async scraper(browser, zipCode){
         let page = await browser.newPage();
 
         console.log(`Navigating to ${this.url}...`);
@@ -9,13 +9,15 @@ const scraperObject = {
 
         const navigationPromise = page.waitForNavigation({ waitUntil: ['networkidle2'] })
 
-        await page.type('input', '10002');
+        await page.type('input', zipCode);
     
         await page.click('button');
 
         await navigationPromise
 
         const articles = await page.$$("section > article");
+
+        let vaccinationSites = []
 
         for( let article of articles ) {
             let vaccinationSite = {
@@ -65,15 +67,15 @@ const scraperObject = {
 
             }
 
-
             const vaccineElement = await article.$("ol li span")
             const vaccine = await page.evaluate(el => el.innerText, vaccineElement)
             vaccinationSite.vaccine = vaccine
 
+            vaccinationSites.push(vaccinationSite)
         }
 
-        console.log(Object.keys(vaccinationSite), "done")
-
+        console.log(Object.keys(vaccinationSites), "done")
+        return vaccinationSites
     }
 }
 

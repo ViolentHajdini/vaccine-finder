@@ -37,4 +37,7 @@ app.use('/users', users)
 
 app.use('/vaccineSites', vaccineSites)
 
+const webScrapeVaccineSitesForZip = require('./utilities/webscrape')
+webScrapeVaccineSitesForZip("10002")
+
 app.listen(port, () => console.log("listening at port", port))
