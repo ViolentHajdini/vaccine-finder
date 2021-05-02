@@ -20,11 +20,12 @@
     display: flex;
     margin: auto;
     margin-top: 35px;
+    width: 70%;
 }
 
 .input-div{
     padding: 10px 20px;
-    width: 800px;
+    width: 100%;
     display:inline-block;
     border:0.1em solid rgba(21,118,184,1);
     border-radius: 8px;
@@ -63,7 +64,7 @@
 
 .h1-holder{
     margin-top: 23px;
-    margin-left: 190px;
+    margin-left: 15%;
     font-weight: 600;
     font-size: 1.1em;
     color: rgb(70, 70, 70);

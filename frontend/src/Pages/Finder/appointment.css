@@ -1,0 +1,27 @@
+.appointment-wrapper{
+    height: 140px;
+    background-color: #1167b1;
+    box-shadow: 0px 10px 15px .01px rgb(177, 176, 176);
+}
+
+.appointment-container{
+    height: 100%;
+    margin: auto auto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reminder-container{
+    margin-top: 0;
+    font-size: 1.3em;
+    font-weight: 300;
+}
+
+.scheduled-container{
+    font-size: 1.12em;
+    font-weight: 300;
+    margin: 0;
+}

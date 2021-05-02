@@ -19,36 +19,36 @@
     font-size: 1.4em;
     font-weight: 700;
     margin: 0;
-    color: rgba(21,118,184,1);
+    color: rgb(27, 105, 158);
     margin-top: 10px;
 }
 
 .type-hospital{
     font-size: .9em;
-    font-weight: 400;
+    font-weight: 500;
     margin-top: 30px;
     margin-bottom: 0;
-    color: #323840;
+    color: #000000;
 }
 
 .type-address{
     font-size: .9em;
-    font-weight: 400;
+    font-weight: 500;
     margin-top: 4px;
-    color: #323840;
+    color: #000000;
 }
 
 .available-text{
     font-size: 1em;
-    font-weight: 600;
+    font-weight: 500;
     margin-top: 30px;
-    color: rgba(21,118,184,1);
+    color: rgb(27, 105, 158);
 }
 
 .type-vaccine{
     font-size: 1em;
     margin-top: 30px;
-    color: rgba(21,118,184,1);
+    color: rgb(27, 105, 158);
 }
 
 .button-wrapper{
