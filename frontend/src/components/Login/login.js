@@ -2,8 +2,11 @@ import React, { useState, useContext }   from 'react'
 import './common.css'
 import { AccountContext } from './accountContext'
 import axios from 'axios'
+import { ADD_USER } from '../../redux/userReducer'
+import { useDispatch } from 'react-redux'
 
 const Login = (props) => {
+    const dispatch = useDispatch()
     const { switchToRegister } =useContext(AccountContext);
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -13,8 +16,12 @@ const Login = (props) => {
             email: email,
             password: password
         }).then(res => {
-            if(res.data.status){
+            console.log(res.data)
+            if(res.data.success){
                 console.log("Login succcessful")
+                dispatch({ type: ADD_USER, user: {
+                    email: email
+                }})
             }else{
                 console.log("Wrong username or password")
             }

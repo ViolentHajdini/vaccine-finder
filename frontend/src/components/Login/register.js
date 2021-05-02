@@ -3,8 +3,11 @@ import './common.css'
 import { AccountContext } from './accountContext'
 import Calendar from 'react-calendar'
 import axios from 'axios'
+import { ADD_USER } from '../../redux/userReducer'
+import { useDispatch } from 'react-redux'
 
 const Register = () => {
+    const dispatch = useDispatch()
     const [month, setMonth] = useState('')
     const [day, setDay] = useState('')
     const [year, setYear] = useState('')
@@ -17,7 +20,6 @@ const Register = () => {
     const [zip, setZip] = useState('')
 
     const handleOnSubmit = (e) => {
-        console.log('hit')
         axios.post("http://localhost:5000/users/register", {
             name: name,
             surname: last,
@@ -27,8 +29,11 @@ const Register = () => {
             zipCode: zip,
             dateOfBirth: new Date(year, month, day)
         }).then(res => {
-            if(res.data.status){
+            if(res.data.success){
                 console.log("User successfully registered")
+                dispatch({ type: ADD_USER, user: {
+                    email: email
+                }})
             }else{
                 console.log(res.data.message)
             }
@@ -84,9 +89,3 @@ const Register = () => {
 }
 
 export default Register
-
- {/* <input type='name' placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-                            <input type='name' placeholder="Surname" value={surname} onChange={(e) => setSurname(e.target.value)} />
-                            <input type='email' placeholder="Email"value={email} onChange={(e) => setEmail(e.target.value)} />
-                            <input type='password' placeholder="Password"value={password} onChange={(e) => setPassword(e.target.value)} />
-                            <button type='submit' className="submit_button"> Submit </button> */}
