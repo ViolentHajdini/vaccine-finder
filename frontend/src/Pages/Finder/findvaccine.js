@@ -3,10 +3,12 @@ import Appointment from './appointment.js'
 import FindComponent from './findComponent';
 import './findVaccine.css'
 import axios from 'axios'
+import Loading from './loading';
 
 const FindVaccine = () => {
     const [zipCode, setZipCode] = useState("")
     const [vaccinationSites, setVaccininationSites] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -16,7 +18,9 @@ const FindVaccine = () => {
             }
         }).then(res => {
             setVaccininationSites(res.data)
+            setLoading(false)
         })
+        setLoading(false)
     }
 
     return (
@@ -34,10 +38,8 @@ const FindVaccine = () => {
                 <h1 className="h1-holder">Sites Available for appointment: </h1>
 
                 {console.log('vs', vaccinationSites, typeof(vaccinationSites))}
-
-                {
-                    Array.from(vaccinationSites.map(site => <FindComponent site={site} />))
-                }
+                <Loading/>
+                {Array.from(vaccinationSites.map(site => <FindComponent site={site} />))}
                 
             </div>
         </div>
