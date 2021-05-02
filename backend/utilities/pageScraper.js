@@ -25,7 +25,8 @@ const scraperObject = {
                 phoneNumber: "",
                 scheduleByPhoneOnly: false,
                 directionsUrl: "",
-                vaccine: ""
+                vaccine: "",
+                appointmentUrl: ""
             }
 
             const nameAddress = await page.evaluate(el => el.getAttribute("aria-label"), article);
@@ -58,9 +59,10 @@ const scraperObject = {
                     const scheduleByPhoneOnly = innerText == "Call for appointment"
                     if(scheduleByPhoneOnly){
                         vaccinationSite.scheduleByPhoneOnly = true
-                    }else{
-                        vaccinationSite.appointmentUrl = href
                     }
+        
+                    vaccinationSite.appointmentUrl = href    
+                    
                 }else if(i == 1){
                     vaccinationSite.directionsUrl = href
                 }

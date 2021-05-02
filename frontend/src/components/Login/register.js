@@ -20,7 +20,6 @@ const Register = () => {
     const [zip, setZip] = useState('')
 
     const handleOnSubmit = (e) => {
-        console.log('hit')
         axios.post("http://localhost:5000/users/register", {
             name: name,
             surname: last,

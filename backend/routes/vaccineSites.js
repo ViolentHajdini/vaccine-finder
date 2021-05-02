@@ -12,8 +12,8 @@ router.get("/locations", (req, res) => {
 
     p.then(locations =>
         res.send(locations.map(location => {
-            const { name, phoneNumber, scheduleByPhoneOnly, directionsUrl, vaccine } = location
-            return { name, phoneNumber, scheduleByPhoneOnly, directionsUrl, vaccine }
+            const { name, phoneNumber, scheduleByPhoneOnly, directionsUrl, vaccine, appointmentUrl } = location
+            return { name, phoneNumber, scheduleByPhoneOnly, directionsUrl, vaccine, appointmentUrl }
         }))
     )
 
