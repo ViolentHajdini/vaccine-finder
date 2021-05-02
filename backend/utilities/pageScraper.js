@@ -74,7 +74,6 @@ const scraperObject = {
             vaccinationSites.push(vaccinationSite)
         }
 
-        // console.log(Object.keys(vaccinationSites), "done")
         return vaccinationSites
     }
 }

@@ -5,16 +5,19 @@ const VaccineSite = require("../models/VaccineSite")
 // webscrape from nyc vaccine finder
 const webScrapeVaccineSitesForZip = require('../utilities/webscrape')
 
-// router.get("/locations", (req, res) => {
-    // var { zipCode } = req.query
-    let locations = webScrapeVaccineSitesForZip("10002")
+router.get("/locations", (req, res) => {
+    var { zipCode } = req.query
+    let locations = webScrapeVaccineSitesForZip(zipCode)
     p = Promise.resolve(locations)
 
-    p.then(locations => locations.map(location => {
-        console.log(location.name)
-    }))
+    p.then(locations =>
+        res.send(locations.map(location => {
+            const { name, phoneNumber, scheduleByPhoneOnly, directionsUrl, vaccine } = location
+            return { name, phoneNumber, scheduleByPhoneOnly, directionsUrl, vaccine }
+        }))
+    )
 
-// })
+})
 
 router.get("/", (req, res) => {
     var { hospitalName } = req.query
@@ -26,18 +29,18 @@ router.get("/", (req, res) => {
                 success: false,
                 message: "Vaccine Site does not exist"
             })
-            
-        } else{
+
+        } else {
             console.log(vaccineSite)
-            var { address, zipCode, vaccineAvailable, phoneNumber, appointmentUrl, direction} = vaccineSite
+            var { address, zipCode, vaccineAvailable, phoneNumber, appointmentUrl, direction } = vaccineSite
 
             res.send({
                 success: true,
                 message: "Vaccine Site found",
-                address, 
-                zipCode, 
-                vaccineAvailable, 
-                phoneNumber, 
+                address,
+                zipCode,
+                vaccineAvailable,
+                phoneNumber,
                 appointmentUrl,
                 direction
             })

@@ -9,12 +9,6 @@ async function scrapeVaccineAppointments(zipCode){
     var vaccinationAppointments = scraperController(browserInstance, zipCode)
 
     return vaccinationAppointments
-    // p = Promise.resolve(vaccinationAppointments)
-
-    // p.then(vaccinationAppointments => {
-    //     console.log('in websc.js', vaccinationAppointments)
-    //     return vaccinationAppointments
-    // })
 }
 
 module.exports = (zipCode) => scrapeVaccineAppointments(zipCode)
