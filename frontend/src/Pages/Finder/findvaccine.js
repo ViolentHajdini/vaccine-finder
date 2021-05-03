@@ -3,7 +3,8 @@ import Appointment from './appointment.js'
 import FindComponent from './findComponent';
 import './findVaccine.css'
 import axios from 'axios'
-import Loading from './loading';
+import { Orbitals } from 'react-spinners-css';
+
 
 const FindVaccine = () => {
     const [zipCode, setZipCode] = useState("")
@@ -36,9 +37,11 @@ const FindVaccine = () => {
                     <button onClick={handleSubmit} className="button-input">Search</button>
                 </div>
                 <h1 className="h1-holder">Sites Available for appointment: </h1>
-
+                <div className="spin-holderr">
+                    
+                </div>
                 {console.log('vs', vaccinationSites, typeof(vaccinationSites))}
-                <Loading/>
+                <Orbitals size={20}/>
                 {Array.from(vaccinationSites.map(site => <FindComponent site={site} />))}
                 
             </div>

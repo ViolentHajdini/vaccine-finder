@@ -74,3 +74,8 @@
 a {
     text-decoration: none;
 }
+
+.spin-holder{
+    background-color: black;
+    display: flex;
+}
