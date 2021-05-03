@@ -1,22 +1,12 @@
-import React from 'react';
-import { Bones } from "react-bones/lib";
+import React from 'react'
+import ReactLoading from 'react-loading';
 
 const Loading = () => {
-    return(
-    <div style={{margin: "auto auto", marginTop:'20px',}}>
-        <view>
-            <Bones />
-            <view style={{ padding: 10 }} />
-            <Bones width={1050} height={30} />
-            <view style={{ padding: 10 }} />
-            <Bones width={1050} height={30} />
-            <view style={{ padding: 10 }} />
-            <Bones width={1050} height={30} />
-            <view style={{ padding: 10 }} />
-        </view>;
-    </div>
+    return (
+        <div>
+            <ReactLoading type={'SpinningBubbles'} color={'#DC143C'} height={667} width={375} />
+        </div>
     )
 }
 
-
-export default Loading;
+export default Loading
