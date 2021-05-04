@@ -19,7 +19,10 @@ const scraperObject = {
 
         let vaccinationSites = []
 
-        for( let article of articles ) {
+        // only queries first 10 articles to improve response time
+        for( i=0; i < 10; i++ ) {
+            article = articles[i]
+        // for( let article of articles ) {
             let vaccinationSite = {
                 name: "",
                 phoneNumber: "",
