@@ -10,7 +10,7 @@ const Appointment = () => {
                 <div className="appointment-container"> 
                     <h1 className="reminder-container">Upcoming appointment for Covid Vaccine Type: {vaccine} </h1>
                     <h1 className="scheduled-container">Location: {vaccinationSite} </h1>
-                    <h1 className="scheduled-container">For more information check your email or call {vaccinationSiteNumber} </h1>
+                    <h1 className="scheduled-container">For more information check your email {vaccinationSiteNumber == "" ? "" : `or call ${vaccinationSiteNumber}`}  </h1>
                 </div>           
             </div>
             : null
