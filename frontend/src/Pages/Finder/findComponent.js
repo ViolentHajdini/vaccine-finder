@@ -13,7 +13,6 @@ const FindComponent = (props) => {
     const { name, phoneNumber, scheduleByPhoneOnly, vaccine, address, directionsUrl, appointmentUrl } = props.site
 
     const handleScheduleAppointment = (e) => {
-        console.log('handle sced app', vaccine, name, phoneNumber)
         e.preventDefault()
         dispatch({
             type: ADD_APPOINTMENT, appointment: {
@@ -45,12 +44,6 @@ const FindComponent = (props) => {
                     <div className="react-wraper">
                         <i class="far fa-calendar-check"></i>
                         <a href={directionsUrl}>Directions</a>
-                    </div>
-                </button>
-                <button className="call-button">
-                    <div className="call-wrapper">
-                        <i class="fas fa-phone-alt"></i>
-                        Call for information
                     </div>
                 </button>
             </div>
