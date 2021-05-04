@@ -1,0 +1,114 @@
+normalized tables
+
+
+vaccination_site Table:
+site_ID int primary key autoincrement,
+name varchar(50),
+address varchar(50),
+phone_number varchar(50),
+
+
+vaccine_type Table:
+vaccine_type_ID int primary key autoincrement,
+name string,
+num_doses_needed int,
+
+
+vaccine Table:
+vaccine_ID int primary key autoincrement,
+vaccine_type_ID int foreign key,
+site_ID int foreign key
+expiration_time_stamp datetime
+
+registrant Table:
+registrant_ID int primary key autoincrement,
+email varchar(50),
+password varchar(50),
+first_name varchar(50),
+last_name varchar(50),
+age int,
+address varchar(50),
+phone_number varchar(50),
+zip_code int
+
+appointment Table:
+appointment_ID int primary key,
+datetime1 datetime,
+datetime2 datetime,
+registrant_ID int foreign key,
+vaccine_ID int foreign key
+
+- users should be able to register
+    insert into registrant 
+    values 
+    (
+        'User', 'One', 21, '123 main street Apt 3, New York, NY 10003', 
+        '(646) 123-4567)', 10003
+    );
+
+
+- search for nearby vaccination sites with vaccines that aren't expired 
+    select 
+    * 
+    from 
+    vaccination_site 
+    where 
+    zip_code < 10002 + 5 
+    and zip_code > 10002 - 5 
+    and expiration_time_stamp > now();
+
+
+- post vaccinations
+    insert into vaccine 
+    values 
+    (
+        (
+        select 
+            vaccine_ID 
+        from 
+            vaccine_type 
+        where 
+            name = 'Moderna'
+        ), 
+        (
+        select 
+            site_ID 
+        from 
+            vaccination_site 
+        where 
+            name = 'Walgreens/Duane Reade'
+        )
+    );
+
+- find information about a specific vaccine
+    select 
+    A.vaccine_ID, 
+    B.*, 
+    C.* 
+    from 
+    vaccine A 
+    join vaccine_type B on A.vaccine_ID = B.vaccine_ID 
+    join vaccination_site C on A.site_ID = C.site_ID;
+
+- schedule an appointment 
+   insert into appointment (
+  datetime1, 
+  (
+    select 
+      registrant_ID 
+    from 
+      registrant 
+    where 
+      email = 'user1@gmail.com'
+  ), 
+  (
+    select 
+      vaccine_ID 
+    from 
+      vaccine 
+    order by 
+      expired_time_stamp
+  )
+) 
+values 
+  ;
