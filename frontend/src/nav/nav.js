@@ -21,9 +21,7 @@ const Nav = () => {
                 <Link target='_self' to="/findvaccine">
                     <div className="find-vaccine">Find Vaccines</div>
                 </Link>
-                <Link target="_self" to="/signUp">
-                    {userSelector.isLoggedIn ? <Userlogged/> : <button className="Login">Log In</button> }
-                </Link>
+                {userSelector.isLoggedIn ? <Userlogged/> : <Link target="_self" to="/signUp"> <button className="Login">Log In</button> </Link> }
             </div>
         </div>
     )
