@@ -1,13 +1,20 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import './appointment.css'
 
 const Appointment = () => {
+    const { vaccine, hasAppointmentScheduled, vaccinationSite, vaccinationSiteNumber } = useSelector(state => state.appointmentReducer)
+
     return (
-        <div className="appointment-wrapper">
-            <div className="appointment-container"> 
-                <h1 className="reminder-container">Upcoming appointment for Covid Vaccine Type: </h1>
-                <h1 className="scheduled-container">Scheduled for 05/07/2021 </h1>
-            </div>           
+        <div>{ hasAppointmentScheduled ? <div className="appointment-wrapper">
+                <div className="appointment-container"> 
+                    <h1 className="reminder-container">Upcoming appointment for Covid Vaccine Type: {vaccine} </h1>
+                    <h1 className="scheduled-container">Location: {vaccinationSite} </h1>
+                    <h1 className="scheduled-container">For more information check your email or call {vaccinationSiteNumber} </h1>
+                </div>           
+            </div>
+            : null
+        }
         </div>
     )
 }

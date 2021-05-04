@@ -15,13 +15,13 @@ const FindComponent = (props) => {
     const handleScheduleAppointment = (e) => {
         console.log('handle sced app', vaccine, name, phoneNumber)
         e.preventDefault()
-        // dispatch({
-        //     type: ADD_APPOINTMENT, appointment: {
-        //         vaccine: vaccine,
-        //         vaccinationSite: name,
-        //         vaccinationSiteNumber: phoneNumber,
-        //     }
-        // })
+        dispatch({
+            type: ADD_APPOINTMENT, appointment: {
+                vaccine: vaccine,
+                vaccinationSite: name,
+                vaccinationSiteNumber: phoneNumber,
+            }
+        })
 
     }
 
