@@ -37,13 +37,13 @@ const FindComponent = (props) => {
                 <button className="reserve-button" onClick={(e) => handleScheduleAppointment(e)}>
                     <div className="react-wraper">
                         <i class="far fa-calendar-check"></i>
-                        <a href={appointmentUrl}>{scheduleByPhoneOnly ? 'Schedule Appointment: Phone Calls Only' : 'Schedule Appointment'}</a>
+                        <a className="link-wrapper"href={appointmentUrl}>{scheduleByPhoneOnly ? 'Schedule Appointment: Phone Calls Only' : 'Schedule Appointment'}</a>
                     </div>
                 </button>
                 <button className="reserve-button">
                     <div className="react-wraper">
                         <i class="far fa-calendar-check"></i>
-                        <a href={directionsUrl}>Directions</a>
+                        <a className="link-wrapper" href={directionsUrl}>Directions</a>
                     </div>
                 </button>
             </div>
