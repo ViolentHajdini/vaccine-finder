@@ -1,0 +1,122 @@
+Attributes.
+
+vaccination_raw Table:
+vaccination_site_name varchar(50),
+vaccination_site_address varchar(50),
+phone_number varchar(50),
+vaccine_type varchar(50),
+age int,
+num_doses_needed int,
+expiration_time_stamp datetime,
+appointment_datetime1 datetime,
+appointment_datetime2 datetime,
+appointment_registrant_ID int foreign key,
+first_name varchar(50),
+last_name varchar(50),
+email varchar(50),
+password varchar(50),
+age int,
+address varchar(50),
+phone_number varchar(50),
+
+--------------------------------------------------------------
+
+1NF_vaccination Table:
+vaccination_site_name varchar(50),
+vaccination_site_address varchar(50),
+phone_number varchar(50),
+vaccine_type varchar(50),
+age int,
+num_doses_needed int,
+expiration_time_stamp datetime,
+vaccination_site_zip_code int
+first_name varchar(50),
+last_name varchar(50),
+password varchar(50),
+age int,
+address varchar(50),
+phone_number varchar(50),
+registrant_zip_code int
+
+--------------------------------------------------------------
+
+
+2NF_vaccination_site Table:
+site_ID int primary key,
+name varchar(50),
+address varchar(50),
+phone_number varchar(50),
+
+
+2NF_vaccine_type Table:
+vaccine_type_ID int primary key,
+name string,
+num_doses_needed int,
+
+
+2NF_vaccine Table:
+vaccine_ID int foreign key,
+vaccine_type_ID int foreign key,
+site_ID int foreign key
+expiration_time_stamp datetime
+
+
+2NF_registrants Table:
+first_name varchar(50),
+last_name varchar(50),
+email varchar(50),
+password varchar(50),
+age int,
+address varchar(50),
+phone_number varchar(50),
+zip_code int
+
+2NF_appointment Table:
+appointment_ID int primary key,
+datetime1 datetime,
+datetime2 datetime,
+registrant_ID int foreign key,
+vaccine_ID int foreign key
+
+
+--------------------------------------------------------------
+
+normalized tables
+
+
+vaccination_site Table:
+site_ID int primary key autoincrement,
+name varchar(50),
+address varchar(50),
+phone_number varchar(50),
+
+
+vaccine_type Table:
+vaccine_type_ID int primary key autoincrement,
+name string,
+num_doses_needed int,
+
+
+vaccine Table:
+vaccine_ID int primary key autoincrement,
+vaccine_type_ID int foreign key,
+site_ID int foreign key
+expiration_time_stamp datetime
+
+registrant Table:
+registrant_ID int primary key autoincrement,
+email varchar(50),
+password varchar(50),
+first_name varchar(50),
+last_name varchar(50),
+age int,
+address varchar(50),
+phone_number varchar(50),
+zip_code int
+
+appointment Table:
+appointment_ID int primary key,
+datetime1 datetime,
+datetime2 datetime,
+registrant_ID int foreign key,
+vaccine_ID int foreign key
