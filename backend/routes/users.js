@@ -36,7 +36,8 @@ router.post("/login", (req, res) => {
           console.log("Success: email and password match")
           res.send({
               success: true,
-              message: "Email and password match" 
+              message: "Email and password match",
+              name : user.name
           })
         }
       }

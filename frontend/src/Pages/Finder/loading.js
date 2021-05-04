@@ -1,22 +1,28 @@
-import React from 'react';
-import { Bones } from "react-bones/lib";
+import React from 'react'
+import './loading.scss'
 
 const Loading = () => {
-    return(
-    <div style={{margin: "auto auto", marginTop:'20px',}}>
-        <view>
-            <Bones />
-            <view style={{ padding: 10 }} />
-            <Bones width={1050} height={30} />
-            <view style={{ padding: 10 }} />
-            <Bones width={1050} height={30} />
-            <view style={{ padding: 10 }} />
-            <Bones width={1050} height={30} />
-            <view style={{ padding: 10 }} />
-        </view>;
-    </div>
+    return (
+        <div>
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <circle id="test" cx="40" cy="40" r="32"></circle>
+                </svg>
+            </div>
+
+            <div class="loader triangle">
+            <svg viewBox="0 0 86 80">
+                <polygon points="43 8 79 72 7 72"></polygon>
+            </svg>
+            </div>
+
+            <div class="loader">
+                <svg viewBox="0 0 80 80">
+                    <rect x="8" y="8" width="64" height="64"></rect>
+                </svg>
+            </div>
+        </div>
     )
 }
 
-
-export default Loading;
+export default Loading

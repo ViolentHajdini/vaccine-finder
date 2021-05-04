@@ -5,6 +5,7 @@ import Calendar from 'react-calendar'
 import axios from 'axios'
 import { ADD_USER } from '../../redux/userReducer'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom';
 
 const Register = () => {
     const dispatch = useDispatch()
@@ -18,6 +19,7 @@ const Register = () => {
     const [address, setAddress] = useState('')
     const [number, setNumber] = useState('')
     const [zip, setZip] = useState('')
+    let history = useHistory();
 
     const handleOnSubmit = (e) => {
         axios.post("http://localhost:5000/users/register", {
@@ -34,6 +36,7 @@ const Register = () => {
                 dispatch({ type: ADD_USER, user: {
                     email: email
                 }})
+                history.push('/findvaccine')
             }else{
                 console.log(res.data.message)
             }

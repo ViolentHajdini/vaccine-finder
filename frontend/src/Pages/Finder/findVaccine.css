@@ -74,3 +74,10 @@
 a {
     text-decoration: none;
 }
+
+.loader-wrapper{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    margin-top: 80px;
+}
