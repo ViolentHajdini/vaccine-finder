@@ -11,7 +11,7 @@ const initialState = {
 function vaccineReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_APPOINTMENT:
-        
+
       let newState = {
         ...state, 
         ...action.appointment,
@@ -20,7 +20,6 @@ function vaccineReducer(state = initialState, action) {
 
       return newState
     
-    // if the action is not recognized, don't do anything
     default:
       return state
   }
