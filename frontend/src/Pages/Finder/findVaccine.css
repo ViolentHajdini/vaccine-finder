@@ -75,7 +75,9 @@ a {
     text-decoration: none;
 }
 
-.spin-holder{
-    background-color: black;
+.loader-wrapper{
+    width: 100%;
+    justify-content: center;
     display: flex;
+    margin-top: 80px;
 }

@@ -16,6 +16,7 @@ function userReducer(state = initialState, action) {
       return Object.assign({}, state, {
         isLoggedIn: true,
         email: action.user.email,
+        name: action.user.name,
       })
 
     case REMOVE_USER:

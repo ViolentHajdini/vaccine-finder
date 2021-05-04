@@ -4,12 +4,16 @@ import { AccountContext } from './accountContext'
 import axios from 'axios'
 import { ADD_USER } from '../../redux/userReducer'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom';
 
 const Login = (props) => {
     const dispatch = useDispatch()
     const { switchToRegister } =useContext(AccountContext);
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    let history = useHistory();
+
 
     const handleOnSubmit = (e) => {
         axios.post("http://localhost:5000/users/login", {
@@ -20,8 +24,10 @@ const Login = (props) => {
             if(res.data.success){
                 console.log("Login succcessful")
                 dispatch({ type: ADD_USER, user: {
-                    email: email
+                    email: email,
+                    name: res.data.name
                 }})
+                history.push('/findvaccine')
             }else{
                 console.log("Wrong username or password")
             }

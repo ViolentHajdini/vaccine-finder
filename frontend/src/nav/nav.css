@@ -2,7 +2,15 @@
     text-decoration: none;
 }
 
+.name-wrapper{
+    color: rgba(21,118,184,1);
+    font-size: 1.1em;
+    justify-content: center;
+    margin-top: 2px;
+}
+
 .nav-wrapper{
+    height: 55px;
     position:fixed;
     top: 0;
     width: 100vw;

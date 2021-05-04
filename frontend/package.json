@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "framer-motion": "^4.1.5",
+    "node-sass": "^5.0.0",
     "react": "^17.0.2",
     "react-bones": "^1.0.3",
     "react-calendar": "^3.4.0",
