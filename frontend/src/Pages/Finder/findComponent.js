@@ -1,12 +1,29 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import './findComponent.css'
+import { ADD_APPOINTMENT } from '../../redux/appointmentReducer'
 
 const FindComponent = (props) => {
-    if(!props.site){
+    const dispatch = useDispatch()
+
+    if (!props.site) {
         return <div></div>
     }
 
-    const { name, phoneNumber, scheduleByPhoneOnly, vaccine, address, directionsUrl, appointmentUrl} = props.site
+    const { name, phoneNumber, scheduleByPhoneOnly, vaccine, address, directionsUrl, appointmentUrl } = props.site
+
+    const handleScheduleAppointment = (e) => {
+        console.log('handle sced app', vaccine, name, phoneNumber)
+        e.preventDefault()
+        // dispatch({
+        //     type: ADD_APPOINTMENT, appointment: {
+        //         vaccine: vaccine,
+        //         vaccinationSite: name,
+        //         vaccinationSiteNumber: phoneNumber,
+        //     }
+        // })
+
+    }
 
     return (
         <div className="finder-wrapper">
@@ -15,12 +32,13 @@ const FindComponent = (props) => {
                 <h3 className="type-address">{address}</h3>
                 <h1 className="available-text">Vaccine Avaliable!</h1>
                 <h1 className="type-vaccine">Type of Vaccine: {vaccine}</h1>
+                <h1 className="type-vaccine">Phone Number: {phoneNumber != "" ? phoneNumber : 'N/A'}</h1>
             </div>
             <div className="button-wrapper">
-                <button className="reserve-button">
+                <button className="reserve-button" onClick={(e) => handleScheduleAppointment(e)}>
                     <div className="react-wraper">
                         <i class="far fa-calendar-check"></i>
-                        <a href={appointmentUrl}>Schedule Appointment</a>
+                        <a href={appointmentUrl}>{scheduleByPhoneOnly ? 'Schedule Appointment: Phone Calls Only' : 'Schedule Appointment'}</a>
                     </div>
                 </button>
                 <button className="reserve-button">

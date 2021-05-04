@@ -4,10 +4,13 @@ import FindComponent from './findComponent';
 import './findVaccine.css'
 import axios from 'axios'
 import Loading from './loading.js'
+import { useDispatch, useSelector} from 'react-redux'
+import { ADD_VACCINE_SITES_DATA } from '../../redux/userReducer'
 
 const FindVaccine = () => {
+    const dispatch = useDispatch()
     const [zipCode, setZipCode] = useState("")
-    const [vaccinationSites, setVaccininationSites] = useState([])
+    const vaccinationSites = useSelector(state => state.userReducer.vaccineSitesData)
     //const [loader, setLoader] = useState(false)
 
     const handleSubmit = (e) => {
@@ -19,7 +22,7 @@ const FindVaccine = () => {
             }
         }).then(res => {
             //setLoader(false)
-            setVaccininationSites(res.data)
+            dispatch({type: ADD_VACCINE_SITES_DATA, vaccineSitesData: res.data })
         })
     }
 
@@ -35,7 +38,6 @@ const FindVaccine = () => {
                     <button onClick={handleSubmit} className="button-input">Search</button>
                 </div>
                 {/* <div className="loader-wrapper"><Loading/></div>} */}
-                {console.log('vs', vaccinationSites, typeof(vaccinationSites))}
                 {Array.from(vaccinationSites.map(site => <FindComponent site={site} />))}
                 
             </div>
