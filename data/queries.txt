@@ -42,43 +42,51 @@ vaccine_ID int foreign key
     insert into registrant 
     values 
     (
-        'User', 'One', 21, '123 main street Apt 3, New York, NY 10003', 
+        14, 'user@gmail.com', 'sadf34', 'John', 'Doe', 25, 'New York, NY 10003', 
         '(646) 123-4567)', 10003
     );
 
 
 - search for nearby vaccination sites with vaccines that aren't expired 
-    select 
-    * 
-    from 
-    vaccination_site 
-    where 
-    zip_code < 10002 + 5 
-    and zip_code > 10002 - 5 
-    and expiration_time_stamp > now();
+  select 
+    B.* 
+  from 
+    vaccine A 
+    join vaccination_site B 
+  where 
+    A.site_ID = B.site_ID 
+    and zip_code < 10002 + 5 
+    and zip_code > 10002 - 5;
+
+
+select * from vaccination_site join where zip_code < 10002 + 5 and zip_code > 10002 - 5;
 
 
 - post vaccinations
-    insert into vaccine 
-    values 
+insert into vaccine 
+values 
+  (
+    11, 
     (
-        (
-        select 
-            vaccine_ID 
-        from 
-            vaccine_type 
-        where 
-            name = 'Moderna'
-        ), 
-        (
-        select 
-            site_ID 
-        from 
-            vaccination_site 
-        where 
-            name = 'Walgreens/Duane Reade'
-        )
-    );
+      select 
+        vaccine_type_id 
+      from 
+        vaccination_type 
+      where 
+        name = 'Moderna'
+    ), 
+    (
+      select 
+        site_ID 
+      from 
+        vaccination_site 
+      where 
+        name = 'Walgreens/Duane Reade' 
+        and address = '459 Broadway, Manhattan 10013'
+    ), 
+    '2021-05-05 07:00:00'
+  );
+
 
 - find information about a specific vaccine
     select 
@@ -87,28 +95,141 @@ vaccine_ID int foreign key
     C.* 
     from 
     vaccine A 
-    join vaccine_type B on A.vaccine_ID = B.vaccine_ID 
+    join vaccination_type B on A.vaccine_type_id = B.vaccine_type_id 
     join vaccination_site C on A.site_ID = C.site_ID;
 
 - schedule an appointment 
-   insert into appointment (
-  datetime1, 
-  (
-    select 
-      registrant_ID 
-    from 
-      registrant 
-    where 
-      email = 'user1@gmail.com'
-  ), 
-  (
-    select 
-      vaccine_ID 
-    from 
-      vaccine 
-    order by 
-      expired_time_stamp
-  )
-) 
+
+insert into appointment 
 values 
-  ;
+  (
+    16, 
+    '2021/07/05 09:00:00', 
+    '2021/05/30 08:00:00', 
+    (
+      select 
+        registrant_ID 
+      from 
+        registrant 
+      where 
+        email = 'user@gmail.com'
+    ), 
+    (
+      select 
+        vaccine_ID 
+      from 
+        vaccine 
+      order by 
+        expiration_time_stamp 
+      limit 
+        1
+    )
+  );
+
+
+
+
+create table vaccination_type (vaccine_type_id int primary key, name varchar(50), num_doses_needed int);
+create table vaccination_site (site_ID int primary key, name varchar(50), address varchar(50), phone_number varchar(50));
+create table registrant (registrant_ID int primary key, email varchar(50), password varchar(50), first_name varchar(50), last_name varchar(50), age int, address varchar(50), phone_number varchar(50), zip_code int);
+create table vaccine (vaccine_ID int primary key, vaccine_type_ID int, site_ID int,expiration_time_stamp timestamp);
+create table appointment (appointment_ID int primary key, datetime1 timestamp, datetime2 timestamp, registrant_ID int, vaccine_ID int);
+
+vaccination_site.csv
+
+
+load data local infile 'vaccination_type.csv' into table vaccination_type
+ fields terminated by ',' optionally enclosed by '"' ignore 1 lines;
+
+load data local infile 'vaccination_site.csv' into table vaccination_site
+ fields terminated by ',' optionally enclosed by '"' ignore 1 lines;
+
+load data local infile 'registrant.csv' into table registrant
+ fields terminated by ',' optionally enclosed by '"' ignore 1 lines;
+
+load data local infile 'vaccine.csv' into table vaccine
+ fields terminated by ',' optionally enclosed by '"' ignore 1 lines;
+
+load data local infile 'appointment.csv' into table appointment
+ fields terminated by ',' optionally enclosed by '"' ignore 1 lines;
+
+insert into vaccination_site values (11, 'Total Foot and Ankle Care - Christopher Chow DPM', '139 Centre Street Suite 702, Manhattan 10013', '(800) 925-4733', 10013);
+insert into vaccination_site values (12, 'Rendr Care: Advanced Oncology', '139 Centre Street, 515, Manhattan 10013', '(212) 941-9020', 10013);
+insert into vaccination_site values (15, 'Walgreens/Duane Reade', '459 Broadway, Manhattan 10013', '(877) 829-4692', 10007);
+insert into vaccination_site values (18, 'NYC Health Dept. - Downtown Clinic', '1 Centre Street, Manhattan 10007', '(877) 829-4692' '10013');
+insert into vaccination_site values (20, '30TH AVENUE PHARMACY INC', '35-06 30th Ave Long Island City, NY 11103', '718-777-8544', 11103);
+
+insert into vaccine (1, 1, 1, '2021-05-05 12:00:00');
+
++---------+--------------------------------------------------+----------------------------------------------+----------------+----------+
+| site_ID | name                                             | address                                      | phone_number   | zip_code |
++---------+--------------------------------------------------+----------------------------------------------+----------------+----------+
+|       1 | Walgreens/Duane Reade                            | 100 Delancey Street, Manhattan 10002         | (800) 925-4733 |    10002 |
+|       3 | Healthy Pharmacy                                 | 108 Bowery, Manhattan 10013                  | (212) 966-8682 |    10013 |
+|       5 | Walgreens/Duane Reade                            | 194 East 2nd Street, Manhattan 10009         | (800) 925-4733 |    10009 |
+|       8 | Walgreens/Duane Reade                            | 60 Spring Street, Manhattan                  | (800) 925-4733 |    10009 |
+|      11 | Total Foot and Ankle Care - Christopher Chow DPM | 139 Centre Street Suite 702, Manhattan 10013 | (800) 925-4733 |    10013 |
+|      12 | Rendr Care: Advanced Oncology                    | 139 Centre Street, 515, Manhattan 10013      | (212) 941-9020 |    10013 |
+|      15 | Walgreens/Duane Reade                            | 459 Broadway, Manhattan 10013                | (877) 829-4692 |    10007 |
+|      18 | NYC Health Dept. - Downtown Clinic               | 1 Centre Street, Manhattan 10007             | (877) 829-4692 |    10013 |
+|      20 | 30TH AVENUE PHARMACY INC                         | 35-06 30th Ave Long Island City, NY 11103    | 718-777-8544   |    11103 |
++---------+--------------------------------------------------+----------------------------------------------+----------------+----------+
+
++-----------------+-------------------+------------------+
+| vaccine_type_id | name              | num_doses_needed |
++-----------------+-------------------+------------------+
+|               1 | Pfizer            |                2 |
+|               2 | Moderna           |                2 |
+|               3 | Johnson & Johnson |                1 |
++-----------------+-------------------+------------------+
+
+insert into vaccine values (1, 1, 1, '2021/05/05 07:00:00');
+insert into vaccine values (2, 3, 3, '2021/05/05 07:00:00');
+insert into vaccine values (3, 2, 5, '2021/05/05 07:00:00');
+insert into vaccine values (4, 1, 8, '2021/05/05 07:00:00');
+insert into vaccine values (5, 1, 11, '2021/05/05 07:00:00');
+insert into vaccine values (6, 2, 12, '2021/05/05 07:00:00');
+insert into vaccine values (7, 1, 15, '2021/05/05 07:00:00');
+insert into vaccine values (9, 2, 18, '2021/05/05 07:00:00');
+insert into vaccine values (10, 1, 20, '2021/05/05 07:00:00');
+
++------------+-----------------+---------+-----------------------+
+| vaccine_ID | vaccine_type_ID | site_ID | expiration_time_stamp |
++------------+-----------------+---------+-----------------------+
+|          1 |               1 |       1 | 2021-05-05 07:00:00   |
+|          2 |               3 |       3 | 2021-05-05 07:00:00   |
+|          3 |               2 |       5 | 2021-05-05 07:00:00   |
+|          4 |               1 |       8 | 2021-05-05 07:00:00   |
+|          5 |               1 |      11 | 2021-05-05 07:00:00   |
+|          6 |               2 |      12 | 2021-05-05 07:00:00   |
+|          7 |               1 |      15 | 2021-05-05 07:00:00   |
+|          9 |               2 |      18 | 2021-05-05 07:00:00   |
+|         10 |               1 |      20 | 2021-05-05 07:00:00   |
++------------+-----------------+---------+-----------------------+
+
+reg 1 to 13
+
+insert into registrant values (1, 'kbettam0@sun.com', 'a70SAhuQ', 'Klemens', 'Bettam', 30, '419 Studebaker Street East Elmhurst, NY 11370', '646-331-5946', 10292);
+insert into registrant values (2, 'dcoutts1@fda.gov@sun.com', 'a70SAhuQ', 'Pedro', 'Coutts', 15, '419 Studebaker Street East Elmhurst, NY 11370', '516-740-7427', 10452);
+insert into registrant values (3, 'pfranceschi2@oakley.com', '967YVrAGD6', 'Web', 'Tydeman', 20, '419 Studebaker Street East Elmhurst, NY 11370', '516-740-7427', 10452);
+insert into registrant values (4, 'atydeman3@yellowbook.com', '891hUOCw', 'Leonard', 'Salan', 25, '9870 Linda Street Poughkeepsie, NY 12603', '646-331-5946', 11104);
+insert into registrant values (5, 'pwoolmer4@plala.or.jp', '967YVrAGD6', 'Klemens', 'Cleeves', 23, '303 San Juan Dr. Brooklyn, NY 11214', '646-331-5946', 11104);
+insert into registrant values (6, 'rmaclaren5@barnesandnoble.com', 'a70SAhuQ', 'Fredra', 'Bettam', 23, '419 Studebaker Street East Elmhurst, NY 11370', '212-410-4285', 11104);
+insert into registrant values (7, 'nsalan6@hostgator.com', 'a70SAhuQ', 'Klemens', 'Casini', 30, '419 Studebaker Street East Elmhurst, NY 11370', '212-410-4285', 10292);
+insert into registrant values (8, 'rmarron7@soup.io', '891hUOCw', 'Klemens', 'Bettam', 30, '419 Studebaker Street East Elmhurst, NY 11370', '212-410-4285', 10292);
+insert into registrant values (9, 'ajersh8@chicagotribune.com', 'a70SAhuQ', 'Klemens', 'Bettam', 10, '419 Studebaker Street East Elmhurst, NY 11370', '646-331-5946', 10292);
+insert into registrant values (10, 'mcleeves9@unblog.fr', 'a70SAhuQ', 'Ofilia', 'Dabrowski', 15, '9870 Linda Street Poughkeepsie, NY 12603', '607-532-2677', 10308);
+insert into registrant values (11, 'ltroya@people.com.cn', '891hUOCw', 'Klemens', 'Jersh', 17, '9870 Linda Street Poughkeepsie, NY 12603', '607-532-2677', 11102);
+insert into registrant values (12, 'usloyb@netscape.com', '967YVrAGD6', 'Wang', 'Bettam', 21, '419 Studebaker Street East Elmhurst, NY 11370', '646-331-5946', 11102);
+insert into registrant values (13, 'wpessoldc@howstuffworks.com', 'a70SAhuQ', 'Celene', 'Sloy', 20, '80 Riverview Drive Flushing, NY 11354', '646-331-5946', 10308);
+
+insert into appointment values (1, '2021/05/05 07:00:00', '2021/06/05 07:00:00', 1, 1);
+insert into appointment values (2, '2021/06/05 17:00:00', '2021/08/08 08:00:00', 2, 2);
+insert into appointment values (3, '2021/05/08 05:00:00', '2021/08/08 08:00:00', 3, 3);
+insert into appointment values (4, '2021/06/06 12:00:00', '2021/08/08 09:00:00', 4, 4);
+insert into appointment values (5, '2021/06/06 13:00:00', '2021/09/09 10:00:00', 5, 5);
+insert into appointment values (6, '2021/05/06 20:00:00', '2021/09/09 12:00:00', 6, 6);
+insert into appointment values (7, '2021/06/05 11:00:00', '2021/06/05 01:00:00', 7, 7);
+insert into appointment values (8, '2021/05/05 08:00:00', '2021/05/17 03:00:00', 8, 8);
+insert into appointment values (9, '2021/07/06 05:00:00', '2021/05/25 02:00:00', 9, 9);
+insert into appointment values (10, '2021/07/05 09:00:00', '2021/05/30 08:00:00', 10, 10);
