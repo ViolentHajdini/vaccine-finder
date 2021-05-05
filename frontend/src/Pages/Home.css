@@ -105,6 +105,8 @@
     align-items: center;
     display: flex;
     justify-content: center;   
+    box-shadow: 0 10px 6px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 2em;
 }
 
 .bot-nav-wrapper{
@@ -114,14 +116,15 @@
     align-items: center;
     justify-content: center;
 }
+
 .header-bot{
     color: white;
     margin: auto;
     font-weight: 600;
     font-size: 2em;
     margin-top: 10px;
-
 }
+
 .nav-bot{
     color: white;
     margin: auto;

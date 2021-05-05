@@ -11,15 +11,15 @@
 
 .text-wrapper{
     width: 50%;   
-    margin-top: 30px;
-    margin-left: 50px;
+    margin-top: 4em;
+    margin-left: 4em;
 }
 
 .h1-hospital{
     font-size: 1.4em;
     font-weight: 700;
     margin: 0;
-    color: rgb(27, 105, 158);
+    color: rgb(1, 89, 148);
     margin-top: 10px;
 }
 
@@ -42,13 +42,13 @@
     font-size: 1em;
     font-weight: 500;
     margin-top: 30px;
-    color: rgb(27, 105, 158);
+    color: rgb(0, 78, 131);
 }
 
 .type-vaccine{
     font-size: 1em;
     margin-top: 30px;
-    color: rgb(27, 105, 158);
+    color: rgb(0, 92, 153);
 }
 
 .button-wrapper{
@@ -59,7 +59,13 @@
     margin: auto;
     align-items: center;   
 }
-
+.link-wrapper{
+    text-decoration: none;
+    color:rgb(0, 92, 153);
+}
+.link-wrapper:hover{
+    color:white;
+}
 .reserve-button{
     background: none;
 	color: inherit;
@@ -74,6 +80,7 @@
     margin-bottom: 15px;
 }
 
+
 .react-wraper{
     display: flex;
     justify-content: space-between;
@@ -86,7 +93,6 @@
     background-color: transparent;
     font-family:'Roboto',sans-serif;
     font-weight: 600;
-    color:rgba(21,118,184,1);   
     transition: all 0.2s;
     cursor: pointer;
     width: 250px;
@@ -95,11 +101,17 @@
     justify-content: center;
     vertical-align: middle;
     align-items: center;
+    color:rgb(0, 92, 153);
 }
 
 .react-wraper:hover{
     color:white !important;
     background-color:rgba(21,118,184,1);
+    margin: 0 10px;
+}
+
+.react-wraper:focus{
+    color: white;
 }
 
 .fa-calendar-check{
